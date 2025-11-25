@@ -376,8 +376,8 @@ class Sampler:
             # Simulate system
             n_steps = int(T / dt)
             for _ in range(n_steps):
-                noise = torch.randn(self.N, self.D, device=self.device) * noise_std
-                self.samples += (self.f(self.samples) + noise) * dt
+                noise = torch.randn(self.N, self.D, device=self.device) * noise_std * math.sqrt(dt)
+                self.samples += self.f(self.samples) * dt + noise
             
             # Remove nan or inf samples
             nan_idx = torch.isnan(self.samples).any(dim=-1)
