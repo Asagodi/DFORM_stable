@@ -17,6 +17,7 @@ from typing import Callable, Any, Tuple, Sequence
 from torch import Tensor
 from matplotlib import pyplot as plt
 from visualizations import PlotVec
+import math
 
 # For debugging
 import logging
